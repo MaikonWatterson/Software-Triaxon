@@ -1,7 +1,4 @@
-from flask import Flask, render_template
-import routes.cadastrar_paciente as pacientes
-import routes.cadastrar_medico as medicos
-import routes.pesquisar_paciente as pesquisa_pac
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -9,29 +6,29 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/paciente_cadastro')
-def pagina_paciente():
+@app.route('/cadastrar_paciente', methods=['GET', 'POST'])
+def cadastrar_paciente():
+    if request.method == 'POST':
+        return redirect(url_for('index'))
     return render_template('paciente_cadastro.html')
 
-@app.route('/medico_cadastro')
-def pagina_medico():
+@app.route('/cadastrar_medico', methods=['GET', 'POST'])
+def cadastrar_medico():
+    if request.method == 'POST':
+        return redirect(url_for('index'))
     return render_template('medico_cadastro.html')
 
-@app.route('/cadastrar_paciente', methods=['POST'])
-def cadastrar_paciente_route():
-    return pacientes.cadastrar_paciente()
+@app.route('/pesquisar_paciente', methods=['GET', 'POST'])
+def pesquisar_paciente():
+    if request.method == 'POST':
+        return render_template('resultado.html')
+    return render_template('pesquisa_paciente.html')
 
-@app.route('/cadastrar_medico', methods=['POST'])
-def cadastrar_medico_route():
-    return medicos.cadastrar_medico()
-
-@app.route("/pesquisar_paciente")
-def pesquisar_paciente_route():
-    return pesquisa_pac.abrir_tela_pesquisa()
-
-@app.route("/pesquisar_paciente", methods=['POST'])
-def processar_pesquisa_route():
-    return pesquisa_pac.processar_pesquisa()
+@app.route('/pesquisar_medico', methods=['GET', 'POST'])
+def pesquisar_medico():
+    if request.method == 'POST':
+        return render_template('resultado.html')
+    return render_template('pesquisa_medico.html')
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False)

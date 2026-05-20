@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="iicone.png" type="image/png">
+    <link rel="icon" href="{{ url_for('static', filename='icone.png') }}" type="image/png">
     <title>Cadastro de Médicos</title>
 
     <style>
@@ -14,7 +14,7 @@
         body {
             color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url(logot.png);
+            background-image: url(static/logot.png);
             background-repeat: no-repeat;
             background-size: cover;
             display: flex;
@@ -208,7 +208,7 @@
 
 <!--Botão "Voltar"-->
 <div class="voltar-container">
-  <a href="index.html">
+  <a href="{{ url_for('index') }}">
     <button class="voltar-btn">Voltar</button>
   </a>
 </div>
@@ -219,7 +219,7 @@
     <span class="tab-title">Cadastro de Médico</span>
   </div><br>
 
-<form action="http://127.0.0.1:5000/cadastrar_medico" method="POST">
+<form action="{{ url_for('cadastrar_medico') }}" method="POST">
     <div class ="linha">
             <div class="col-10">
                 <label for="nome" id="name">Nome</label><br>
@@ -344,6 +344,8 @@
     </div>
 </form>
 </div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 
