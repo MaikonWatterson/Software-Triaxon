@@ -63,4 +63,4 @@ O projeto está na Fase 1 (Versão CLI). De acordo com o nosso planejamento ági
 👥 Desenvolvedores
 Michael Alves / Leonardo Fagundes, Vitor Hugo, Luidy
 
-GitHub: 
+GitHub: https://github.com/MaikonWatterson/Software-Triaxon.git
